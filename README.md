@@ -1,6 +1,6 @@
 # Multi User Blog 
 
-This project is a example for blog system(application) using Google App Engine. 
+This project is a python example for blog system(application) using Google App Engine. 
 
 If user registered in this system, user could login & write posts.
 Each post has a unique key which could use with url.
