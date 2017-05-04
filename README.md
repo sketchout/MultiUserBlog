@@ -34,13 +34,13 @@ Each post has a unique key which could use with url.
 
 # Setup for this project ( from udacity.com ) 
 
-•	Install Python if necessary
-•	Install Google App Engine SDK.
-•	Sign Up for a Google App Engine Account.
-•	When developing locally, you can use dev_appserver.py to run a copy of your app 
-    on your own computer, and access it at http://localhost:8080/.
-•	Create a new project in Google’s Developer Console using a unique name.
-•	Deploy your project with gcloud app deploy.
+    •	Install Python if necessary
+    •	Install Google App Engine SDK.
+    •	Sign Up for a Google App Engine Account.
+    •	When developing locally, you can use dev_appserver.py to run a copy of your app 
+        on your own computer, and access it at http://localhost:8080/.
+    •	Create a new project in Google’s Developer Console using a unique name.
+    •	Deploy your project with gcloud app deploy.
 
 
 
