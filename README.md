@@ -42,5 +42,6 @@ Each post has a unique key which could use with url.
     •	Create a new project in Google’s Developer Console using a unique name.
     •	Deploy your project with gcloud app deploy.
 
-![screenshot](./screenshot_signup.png)
+# Screen Shot - signup
+    ![screenshot](./screenshot_signup.png)
 
