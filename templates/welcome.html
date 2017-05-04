@@ -1,0 +1,16 @@
+{% extends "blog_base.html" %}
+
+{% block content %}
+
+{% if username %}
+<p>
+<h2>Welcome, {{username}}!</h2>
+<br/>
+<h3><a href="/user/logout">Logout</a></h3>
+{% else %}
+<h2> Welcome</h2>
+<br/>
+<h3><a href="/user/login">Login</a> &nbsp; | &nbsp;
+    <a href="/user/signup">Signup</a></h3>
+{% endif %}
+{% endblock %}

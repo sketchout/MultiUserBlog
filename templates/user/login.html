@@ -1,0 +1,37 @@
+{% extends "blog_base.html" %}
+
+{% block content %}
+<h2>Login</h2>
+<form method="post">
+<table>
+<tr>
+  <td class="label">
+    Username
+  </td>
+  <td>
+    <input type="text" name="username" value="{{username}}">
+  </td>
+</tr>
+<tr>
+  <td class="label">
+    Password
+  </td>
+  <td>
+    <input type="password" name="password" value="{{password}}">
+  </td>
+  <td class="error">
+    {{error_login}}
+  </td>
+</tr>
+</table>
+<br>
+<div class="button-holder">
+  <input type="submit" value="Login">
+</div>
+</form>
+<br>
+<div class="notice">
+If you do not have registered, please <strong><a href="/user/signup">click here</a></strong> to signup.
+</div>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "blog_base.html" %}
+
+
+{% block content %}
+
+    <div class="bloglist-header">
+    <a href="/blog/">All Post</a>&nbsp;</a>
+    </div>
+
+    {{post.render() | safe }}
+
+{% endblock %}

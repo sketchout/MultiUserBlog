@@ -1,0 +1,16 @@
+{% extends "blog_base.html" %}
+
+{% block content %}
+
+    {% if username %}
+    {% endif %}
+    <div class="bloglist-header">
+    <strong>Welcome, {{username}}!</strong>&nbsp;&nbsp;
+    <a href="/blog/newpost">New Post</a>&nbsp;|&nbsp; <a href="/user/logout">Logout</a>
+    </div>
+    {% for post in posts %}
+        {{ post.render() | safe }}
+        <br><br>
+    {% endfor %}
+
+{% endblock %}
