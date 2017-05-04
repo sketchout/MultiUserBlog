@@ -1,6 +1,8 @@
+
 # Multi User Blog 
 
 This project is a python example for blog system(application) using Google App Engine. 
+And it use the template engine which is jinja 2.
 
 If user registered in this system, user could login & write posts.
 Each post has a unique key which could use with url.
