@@ -43,5 +43,5 @@ Each post has a unique key which could use with url.
     •	Deploy your project with gcloud app deploy.
 
 # Screen Shot - signup
-    ![screenshot](./screenshot_signup.png)
+![screenshot](./screenshot_signup.png)
 
