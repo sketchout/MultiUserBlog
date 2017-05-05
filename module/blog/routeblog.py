@@ -36,6 +36,9 @@ class NewPostPage(Handler):
         self.render("blog/newpost.html")
 
     def post(self):
+        username = self.read_cookie_val('name')
+        if not username:
+            return self.redirect('/user/login')
         subject = self.request.get("subject")
         content = self.request.get("content")
 
