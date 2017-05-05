@@ -53,13 +53,11 @@ class Handler(webapp2.RequestHandler):
 
     def login(self, u):
         secure_val = make_secure_val(u.name)
-        cookie_str = str("%s=%s; Path=/" % ("name", secure_val))
-        self.response.headers.add_header("Set-Cookie", cookie_str)
+        self.set_cookie_val("name", secure_val)
 
     def login_username(self, username):
         secure_val = make_secure_val(username)
-        cookie_str = str("%s=%s; Path=/" % ("name", secure_val))
-        self.response.headers.add_header("Set-Cookie", cookie_str)
+        self.set_cookie_val("name", secure_val)
 
     def logout(self):
         self.unset_cookie_val("name", "")
