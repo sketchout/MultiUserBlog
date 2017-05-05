@@ -7,6 +7,9 @@ And it use the template engine which is jinja 2 ( http://jinja.pocoo.org/ ).
 If user registered in this system, user could login & write posts.
 Each post has a unique key which could use with url.
 
+# Sample Site URL ( Temporary Operation ) 
+
+    https://norse-blade-166616.appspot.com
 
 # Page Map
 
