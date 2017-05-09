@@ -69,16 +69,16 @@ class LoginPage(Handler):
         username = self.request.get("username")
         password = self.request.get("password")
 
-        # u = User.login(username, password)
-        # if u:
-        #     self.login(u)
-        #     self.redirect("/blog")
-        # else:
-        #     msg = "Invalid login"
-        #     self.render("user/login.html", error_login=msg)
+        u = User.login(username, password)
+        if u:
+            self.login(u)
+            self.redirect("/blog")
+        else:
+            msg = "Invalid login"
+            self.render("user/login.html", error_login=msg)
 
-        self.login_username(username)
-        self.redirect("/blog")
+        # self.login_username(username)
+        # self.redirect("/blog")
 
 
 class SignUpPage(Handler):
@@ -137,7 +137,7 @@ class SignUpPage(Handler):
                 # cookie_str = str( "%s=%s; Path=/" % ("name", secure_val) )
                 # self.response.headers.add_header("Set-Cookie", cookie_str)
 
-                self.redirect("/welcome")
+                self.redirect("/blog")
         else:
             self.render(
                 "user/signup.html",

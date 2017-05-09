@@ -1,6 +1,7 @@
 import hashlib
 import hmac
 import random
+import logging
 
 from string import letters
 from google.appengine.ext import db
@@ -10,7 +11,7 @@ def make_salt(length=5):
     salt = ''.join(random.choice(letters) for x in range(length))
     return salt
 
-
+# salt="|Ojv2-S9a@q(9Qg"
 def make_pw_hash(name, pw, salt=None):
     if not salt:
         salt = make_salt()
@@ -20,6 +21,7 @@ def make_pw_hash(name, pw, salt=None):
 
 def valid_pw(name, password, h):
     salt = h.split(',')[0]
+    logging.info("~~valid_pw : salt :" + salt);
     return h == make_pw_hash(name, password, salt)
 
 
@@ -52,6 +54,7 @@ class User(db.Model):
     @classmethod
     def login(cls, name, pw):
         u = cls.by_name(name)
-        pw = make_pw_hash(name, pw)
+        logging.info("~~~u.pw_hash :"+u.pw_hash)
+        logging.info("~~~ pw :"+pw)
         if u and valid_pw(name, pw, u.pw_hash):
             return u
