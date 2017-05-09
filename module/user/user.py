@@ -11,6 +11,7 @@ def make_salt(length=5):
     salt = ''.join(random.choice(letters) for x in range(length))
     return salt
 
+
 # salt="|Ojv2-S9a@q(9Qg"
 def make_pw_hash(name, pw, salt=None):
     if not salt:
@@ -21,7 +22,7 @@ def make_pw_hash(name, pw, salt=None):
 
 def valid_pw(name, password, h):
     salt = h.split(',')[0]
-    logging.info("~~valid_pw : salt :" + salt);
+    logging.info("~~valid_pw : salt :" + salt)
     return h == make_pw_hash(name, password, salt)
 
 
