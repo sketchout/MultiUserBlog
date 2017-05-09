@@ -81,9 +81,6 @@ class LoginPage(Handler):
             msg = "Invalid login"
             return self.render("user/login.html", error_login=msg)
 
-        # self.login_username(username)
-        # self.redirect("/blog")
-
 
 class SignUpPage(Handler):
     def get(self):
@@ -123,11 +120,6 @@ class SignUpPage(Handler):
                 password_match_result == "" and
                 email_valid_result == ""):
             u = User.by_name(username)
-            # cookie_str = str( "name=%s; Path=/" % username  )
-            # self.response.headers.add_header("Set-Cookie", cookie_str)
-            # self.done(self)
-            # set_cookie_val("name", username)
-            # self.redirect("/welcome?username="+ username)
 
             if u:
                 msg = "That user already exists."
@@ -137,10 +129,6 @@ class SignUpPage(Handler):
                 u.put()
 
                 self.login(u)
-
-                # cookie_str = str( "%s=%s; Path=/" % ("name", secure_val) )
-                # self.response.headers.add_header("Set-Cookie", cookie_str)
-
                 self.redirect("/blog")
         else:
             self.render(
