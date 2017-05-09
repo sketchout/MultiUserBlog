@@ -13,8 +13,15 @@
 
     {% for post in posts %}
         {{ post.render() | safe }}
+
+        <form method="post" action="/blog/{{post.key().id()}}/like">
+            <input type="submit" name="like" value="+ Like"
+                    id="{{post.key().id()}}">
+        </form>
+
         <br>
         <br>
+
     {% endfor %}
     <br>
     <hr>

@@ -1,33 +1,17 @@
 {% extends "blog_base.html" %}
 
 {% block content %}
-<h2>Login</h2>
+<div class="section-title"> # Login # </div>
 <form method="post">
-<table>
-<tr>
-  <td class="label">
-    Username
-  </td>
-  <td>
-    <input type="text" name="username" value="{{username}}">
-  </td>
-</tr>
-<tr>
-  <td class="label">
-    Password
-  </td>
-  <td>
-    <input type="password" name="password" value="{{password}}">
-  </td>
-  <td class="error">
-    {{error_login}}
-  </td>
-</tr>
-</table>
-<br>
-<div class="button-holder">
-  <input type="submit" value="Login">
-</div>
+  Username : <br>
+  <input type="text" name="username" value="{{username}}"><br>
+  Password : <br>
+  <input type="password" name="password" value="{{password}}"><br>
+  <div class="error">{{error_login}}</div>
+  <br>
+  <div class="button-holder">
+    <input type="submit" value="Login">
+  </div>
 </form>
 <br>
 <div class="notice">

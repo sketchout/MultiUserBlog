@@ -9,7 +9,7 @@
             {{ post.created.strftime("%b %d, %Y") }}
         </div>
         <div class="post-by">
-            by [ {{post.author}} ] |  like ({{ post.liked_count }})
+            by [ {{post.author}} ] |  like count ({{ post.liked_count }})
         </div>
         <br>
     </div>
@@ -19,10 +19,11 @@
         <br>
     </div>
     <div>
-        <form method="post" action="/blog/{{post.key().id()}}/like">
-            <input type="submit" name="like" value="+ Like"
-                    id="{{post.key().id()}}">
-        </form>
+    <br>
+<!--     <form method="post" action="/blog/{{post.key().id()}}/like">
+        <input type="submit" name="like" value="+ Like"
+                id="{{post.key().id()}}">
+    </form> -->
     </div>
     <br>
 </div>

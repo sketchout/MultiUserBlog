@@ -1,58 +1,26 @@
 {% extends "blog_base.html" %}
 
 {% block content %}
-<h2>Signup</h2>
+<div class="section-title"> # Sign Up # </div>
 <form method="post">
-<table>
-  <tbody>
-  <tr>
-    <td class="label">Username</td>
-    <td>
-      <input type="text" name="username" value="{{username}}">
-    </td>
-    <td class="error">
-    {{username_valid_result}}
-    </td>
-  </tr>
-
-  <tr>
-    <td class="label">Password</td>
-    <td>
-      <input type="password" name="password" value="{{password}}">
-    </td>
-    <td class="error">
-      {{password_valid_result}}
-    </td>
-  </tr>
-
-  <tr>
-    <td class="label">Verify Password</td>
-    <td>
-      <input type="password" name="verify" value="{{verify}}">
-    </td>
-    <td class="error">
-      {{password_match_result}}
-    </td>
-  </tr>
-
-  <tr>
-    <td class="label">Email (optional)</td>
-    <td>
-      <input type="text" name="email" value="{{email}}">
-    </td>
-    <td class="error">
-      {{email_valid_result}}
-    </td>
-  </tr>
-  </tbody>
-</table>
-<br/>
-<input type="submit" value="Sign Up">
+  Username : <br>
+  <input type="text" name="username" value="{{username}}"><br>
+  <div class="error">{{username_valid_result}}</div>
+  Password : <br>
+  <input type="password" name="password" value="{{password}}"><br>
+  <div class="error">{{password_valid_result}}</div>
+  Verify Password : <br>
+  <input type="password" name="verify" value="{{verify}}"><br>
+  <div class="error">{{password_match_result}}</div>
+  Email (optional) : <br>
+  <input type="text" name="email" value="{{email}}"><br>
+  <div class="error">{{email_valid_result}}</div>
+  <br/>
+  <input type="submit" value="Sign Up">
 </form>
 <br/>
 <div class="notice">
 If you have registerd, please <strong><a href="/user/login">click here</a></strong> to login.
 </div>
-
 
 {% endblock %}
