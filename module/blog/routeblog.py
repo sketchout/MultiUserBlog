@@ -14,11 +14,11 @@ def blog_key(name='default'):
 class BlogListPage(Handler):
     def get(self):
         # posts = db.GqlQuery("select * from Post order by created desc")
-        username = self.read_cookie_val('name')
-        posts = Post.all().order('-created')
-        if not username:
+        if not self.user:
             return self.redirect('/user/login')
-        self.render("blog/bloglist.html", posts=posts, username=username)
+
+        posts = Post.all().order('-created')
+        self.render("blog/bloglist.html", posts=posts, username=self.user.name)
 
 
 class BlogPage(Handler):
@@ -33,11 +33,12 @@ class BlogPage(Handler):
             return
         self.render("blog/blogpost.html", post=post)
 
+
 class LikeBlogPage(Handler):
-    def post(self,blog_id):
-        username = self.read_cookie_val('name')
-        if not username:
+    def post(self, blog_id):
+        if not self.user:
             return self.redirect('/user/login')
+
         key = db.Key.from_path(
                         'Post',
                         int(blog_id),
@@ -47,13 +48,13 @@ class LikeBlogPage(Handler):
             self.error(404)
             return
 
-        if username == post.author:
+        if self.user.name == post.author:
             self.write("You can't like your own post!")
         else:
-            if username in post.liked_user:
+            if self.user.name in post.liked_user:
                 self.write("You can olny like a post once")
             else:
-                post.liked_user.append(username)
+                post.liked_user.append(self.user.name)
                 post.liked_count += 1
                 post.put()
                 time.sleep(0.1)
@@ -62,14 +63,13 @@ class LikeBlogPage(Handler):
 
 class NewPostPage(Handler):
     def get(self):
-        username = self.read_cookie_val('name')
-        if not username:
+        if not self.user:
             return self.redirect('/user/login')
+
         self.render("blog/newpost.html")
 
     def post(self):
-        username = self.read_cookie_val('name')
-        if not username:
+        if not self.user:
             return self.redirect('/user/login')
 
         if "cancel" in self.request.POST:
@@ -77,7 +77,7 @@ class NewPostPage(Handler):
             return
 
         if "save" in self.request.POST:
-            author = username
+            author = self.user.name
             subject = self.request.get("subject")
             content = self.request.get("content")
 
@@ -98,8 +98,7 @@ class NewPostPage(Handler):
 
 class EditPostPage(Handler):
     def get(self, blog_id):
-        username = self.read_cookie_val('name')
-        if not username:
+        if not self.user:
             return self.redirect('/user/login')
 
         key = db.Key.from_path(
@@ -111,14 +110,13 @@ class EditPostPage(Handler):
             self.error(404)
             return
 
-        if username == post.author:
+        if self.user.name == post.author:
             self.render("blog/editpost.html", post=post)
         else:
             self.write("You can't edit other User's posts!")
 
     def post(self, blog_id):
-        username = self.read_cookie_val('name')
-        if not username:
+        if not self.user:
             return self.redirect('/user/login')
 
         subject = self.request.get("subject")
@@ -140,7 +138,8 @@ class EditPostPage(Handler):
                 self.redirect('/blog/%s' % str(uptPost.key().id()))
             else:
                 error = 'subject and content, please!'
-                self.render('blog/editpost.html',
+                self.render(
+                        'blog/editpost.html',
                         subject=subject,
                         content=content,
                         error=error)
@@ -151,9 +150,9 @@ class EditPostPage(Handler):
 
 class DeletePostPage(Handler):
     def get(self, blog_id):
-        username = self.read_cookie_val('name')
-        if not username:
+        if not self.user:
             return self.redirect('/user/login')
+
         key = db.Key.from_path(
                         'Post',
                         int(blog_id),
@@ -161,11 +160,10 @@ class DeletePostPage(Handler):
         post = db.get(key)
         if not post:
             return self.error(404)
-        self.render("blog/delpost.html",post=post);
+        self.render("blog/delpost.html", post=post)
 
     def post(self, blog_id):
-        username = self.read_cookie_val('name')
-        if not username:
+        if not self.user:
             return self.redirect('/user/login')
 
         if "yes" in self.request.POST:
@@ -182,7 +180,6 @@ class DeletePostPage(Handler):
 
         if "no" in self.request.POST:
             return self.redirect("/blog")
-
 
 
 class NewCommentPage(Handler):
@@ -206,8 +203,7 @@ class NewCommentPage(Handler):
                     comments=comments)
 
     def post(self, blog_id):
-        username = self.read_cookie_val('name')
-        if not username:
+        if not self.user:
             return self.redirect('/user/login')
 
         if "cancel" in self.request.POST:
@@ -215,7 +211,7 @@ class NewCommentPage(Handler):
 
         if "submit" in self.request.POST:
             content = self.request.get('content')
-            author = username
+            author = self.user.name
             if content:
                 c = Comment(
                     blog_id=blog_id,
@@ -248,8 +244,7 @@ class NewCommentPage(Handler):
 
 class EditCommentPage(Handler):
     def get(self, comment_id):
-        username = self.read_cookie_val('name')
-        if not username:
+        if not self.user:
             return self.redirect('/user/login')
 
         key = db.Key.from_path(
@@ -260,28 +255,29 @@ class EditCommentPage(Handler):
         if not comment:
             return self.error(404)
 
-        if username == comment.author:
+        if self.user.name == comment.author:
             self.render("blog/editcomment.html", comment=comment)
         else:
             self.write("You can't edit other User's comments!")
 
     def post(self, comment_id):
-        username = self.read_cookie_val('name')
-        if not username:
+        if not self.user:
             return self.redirect('/user/login')
 
         content = self.request.get('content')
         uptComment = Comment.get_by_id(int(comment_id))
 
         if "cancel" in self.request.POST:
-            return self.redirect("/blog/newcomment/%s" % str(uptComment.blog_id))
+            return self.redirect(
+                "/blog/newcomment/%s" % str(uptComment.blog_id))
 
         if "update" in self.request.POST:
             if content:
                 uptComment.content = content
                 uptComment.put()
                 time.sleep(0.1)
-                return self.redirect("/blog/newcomment/%s" % str(uptComment.blog_id))
+                return self.redirect(
+                    "/blog/newcomment/%s" % str(uptComment.blog_id))
 
         if "delete" in self.request.POST:
             self.redirect('/blog/deletecomment/%s' % str(comment_id))
@@ -289,8 +285,7 @@ class EditCommentPage(Handler):
 
 class DeleteCommentPage(Handler):
     def get(self, comment_id):
-        username = self.read_cookie_val('name')
-        if not username:
+        if not self.user:
             return self.redirect('/user/login')
 
         key = db.Key.from_path(
@@ -301,17 +296,17 @@ class DeleteCommentPage(Handler):
         if not comment:
             return self.error(404)
 
-        self.render("blog/delcomment.html",comment=comment);
+        self.render("blog/delcomment.html", comment=comment)
 
     def post(self, comment_id):
-        username = self.read_cookie_val('name')
-        if not username:
+        if not self.user:
             return self.redirect('/user/login')
 
         uptComment = Comment.get_by_id(int(comment_id))
 
         if "no" in self.request.POST:
-            return self.redirect("/blog/newcomment/%s" % str(uptComment.blog_id))
+            return self.redirect(
+                "/blog/newcomment/%s" % str(uptComment.blog_id))
 
         if "yes" in self.request.POST:
             key = db.Key.from_path(
@@ -323,5 +318,5 @@ class DeleteCommentPage(Handler):
                 return self.error(404)
             comment.delete()
             time.sleep(0.1)
-            return self.redirect("/blog/newcomment/%s" % str(uptComment.blog_id))
-
+            return self.redirect(
+                "/blog/newcomment/%s" % str(uptComment.blog_id))
