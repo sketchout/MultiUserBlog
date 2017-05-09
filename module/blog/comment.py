@@ -1,7 +1,5 @@
 import os
 import jinja2
-from module.user.user import User
-
 from google.appengine.ext import db
 
 template_dir = os.path.join(os.path.dirname(__file__), '..', '..', 'templates')
@@ -15,15 +13,13 @@ def render_str(template, **params):
     return t.render(params)
 
 
-class Post(db.Model):
-    author = db.StringProperty(required=True)
-    subject = db.StringProperty(required=True)
+class Comment(db.Model):
     content = db.TextProperty(required=True)
+    author = db.StringProperty(required=True)
+    blog_id = db.StringProperty(required=True)
     created = db.DateTimeProperty(auto_now_add=True)
     modified = db.DateTimeProperty(auto_now=True)
-    liked_count = db.IntegerProperty(default=0)
-    liked_user = db.StringListProperty()
 
     def render(self):
         self._render_text = self.content.replace('\n', '<br>')
-        return render_str("blog/rowpost.html", post=self)
+        return render_str("blog/rowcomment.html", comment=self)
