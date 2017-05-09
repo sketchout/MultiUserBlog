@@ -55,7 +55,5 @@ class User(db.Model):
     @classmethod
     def login(cls, name, pw):
         u = cls.by_name(name)
-        logging.info("~~~u.pw_hash :"+u.pw_hash)
-        logging.info("~~~ pw :"+pw)
         if u and valid_pw(name, pw, u.pw_hash):
             return u
