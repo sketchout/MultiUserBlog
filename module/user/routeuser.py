@@ -69,13 +69,17 @@ class LoginPage(Handler):
         username = self.request.get("username")
         password = self.request.get("password")
 
+        if not (username and password):
+            msg = "Invalid login"
+            return self.render("user/login.html", error_login=msg)
+
         u = User.login(username, password)
         if u:
             self.login(u)
             self.redirect("/blog")
         else:
             msg = "Invalid login"
-            self.render("user/login.html", error_login=msg)
+            return self.render("user/login.html", error_login=msg)
 
         # self.login_username(username)
         # self.redirect("/blog")
