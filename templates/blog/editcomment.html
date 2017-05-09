@@ -1,0 +1,20 @@
+{% extends "blog_base.html" %}
+
+{% block content %}
+<div class="section-title"> # Edit Comment # </div>
+
+<form method="post">
+
+  <label>
+    <div>content</div>
+    <textarea class="comment-textarea" name="content">{{comment.content}}</textarea>
+  </label>
+
+  <div class="error">{{error}}</div>
+
+  <br>
+  <input type="submit" name="update" value="Update">
+  <input type="submit" name="delete" value="Delete">
+  <input type="submit" name="cancel" value="Cancel">
+</form>
+{% endblock %}

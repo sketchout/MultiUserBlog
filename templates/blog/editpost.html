@@ -1,23 +1,23 @@
 {% extends "blog_base.html" %}
 
 {% block content %}
-<div class="section-title"> # New Post # </div>
+<div class="section-title"> # Edit Post # </div>
 
 <form method="post">
   <label class="post-title">
     <div>subject</div>
-    <input type="text" name="subject" value="{{subject}}">
+    <input type="text" name="subject" value="{{post.subject}}">
   </label>
 
   <label class="post-title">
     <div>blog</div>
-    <textarea class="post-textarea" name="content">{{content}}</textarea>
+    <textarea class="post-textarea" name="content">{{post.content}}</textarea>
   </label>
 
   <div class="error">{{error}}</div>
   <br>
-  <input type="submit" name="save" value="Save">
+  <input type="submit" name="update" value="Update">
+  <input type="submit" name="delete" value="Delete">
   <input type="submit" name="cancel" value="Cancel">
 </form>
-<br>
 {% endblock %}

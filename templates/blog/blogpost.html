@@ -3,10 +3,23 @@
 
 {% block content %}
 
-    <div class="bloglist-header">
-    <a href="/blog/">All Post</a>&nbsp;</a>
-    </div>
-
-    {{post.render() | safe }}
-
+<div class="bloglist-header">
+<a href="/blog/">All Posts</a>&nbsp;</a>
+</div>
+{{post.render() | safe }}
+<br>
+<br>
+<hr>
+<div>
+<!-- 	<form method="get" action="/blog/editpost/{{post.key().id()}}">
+		<input type="submit" name="edit" value="Modify">
+	</form>
+	<form method="get" action="/blog/newcomment/{{post.key().id()}}">
+		<input type="submit" name="edit" value="Comment">
+	</form>
+ --><a href="/blog/editpost/{{post.key().id()}}">
+ 		<button class="post-button">Modify</button></a>
+ 	<a href="/blog/newcomment/{{post.key().id()}}">
+ 		<button class="post-button">Comment</button></a>
+ </div>
 {% endblock %}

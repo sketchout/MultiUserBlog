@@ -1,0 +1,28 @@
+<div>
+    <div class="post-heading">
+        <div class="post-title">
+            <a href="/blog/{{post.key().id()}}">
+            {{ post.subject| safe }}</a>
+        </div>
+        <br>
+        <div class="post-date">
+            {{ post.created.strftime("%b %d, %Y") }}
+        </div>
+        <div class="post-by">
+            by [ {{post.author}} ] |  like ({{ post.liked_count }})
+        </div>
+        <br>
+    </div>
+    <div class="post-content">
+        <br>
+        {{ post._render_text | safe }}
+        <br>
+    </div>
+    <div>
+        <form method="post" action="/blog/{{post.key().id()}}/like">
+            <input type="submit" name="like" value="+ Like"
+                    id="{{post.key().id()}}">
+        </form>
+    </div>
+    <br>
+</div>

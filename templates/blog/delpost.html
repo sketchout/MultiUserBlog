@@ -1,0 +1,21 @@
+{% extends "blog_base.html" %}
+
+
+{% block content %}
+<div class="section-title"> # Delete Post # </div>
+
+<div class="bloglist-header">
+	<a href="/blog/">All Posts</a>&nbsp;</a>
+</div>
+
+{{post.render() | safe }}
+
+<hr>
+<br>
+<br>
+<h4 class="alert">Are you sure want to delete this post?</h4>
+<form method="post">
+	<input type="submit" name="yes" value="Yes">
+	<input type="submit" name="no" value="No">
+</form>
+{% endblock %}

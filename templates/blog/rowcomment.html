@@ -1,0 +1,22 @@
+<div class="comment-holder">
+	<div class="comment-heading">
+
+        <div class="post-by">
+            comment by [ {{comment.author}} ]
+            : {{comment.created.strftime("%b %d, %Y")}}
+        </div>
+<!--         <div>
+        	{{comment.content}}
+        </div> -->
+	</div>
+	<div class="comment-content">
+		{{ comment._render_text | safe}}
+	</div>
+    <div class="comment-modified">
+    	( modified : {{comment.modified}})
+    </div>
+<!-- 	<div class="comment-modify-button">
+		<a href="/blog/editcomment/{{comment.key().id()}}">
+		<button class="post-button">Modify</button></a>
+	</div> -->
+</div>

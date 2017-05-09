@@ -1,0 +1,23 @@
+{% extends "blog_base.html" %}
+
+
+{% block content %}
+<div class="section-title"> # Delete Comment # </div>
+
+<div class="bloglist-header">
+	<a href="/blog/">All Posts</a>&nbsp;</a>
+</div>
+
+{{comment.render() | safe }}
+
+<hr>
+<br>
+<br>
+<div class="comment-holder">
+	<h4 class="alert">Are you sure want to delete this comment?</h4>
+	<form method="post">
+		<input type="submit" name="yes" value="Yes">
+		<input type="submit" name="no" value="No">
+	</form>
+</div>
+{% endblock %}

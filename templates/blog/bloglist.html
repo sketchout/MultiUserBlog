@@ -5,12 +5,18 @@
     {% if username %}
     {% endif %}
     <div class="bloglist-header">
-    <strong>Welcome, {{username}}!</strong>&nbsp;&nbsp;
-    <a href="/blog/newpost">New Post</a>&nbsp;|&nbsp; <a href="/user/logout">Logout</a>
+        <strong>Welcome, {{username}}!</strong>
+        &nbsp;&nbsp; <a href="/user/logout">Logout</a>
+        <br><br>
+        <a href="/blog/newpost"><button class="post-button">New Post</button></a>
     </div>
+
     {% for post in posts %}
         {{ post.render() | safe }}
-        <br><br>
+        <br>
+        <br>
     {% endfor %}
-
+    <br>
+    <hr>
+    <hr>
 {% endblock %}
