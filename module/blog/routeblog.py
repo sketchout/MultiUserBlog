@@ -57,7 +57,7 @@ class LikeBlogPage(Handler):
                 post.liked_count += 1
                 post.put()
                 time.sleep(0.1)
-                self.redirect("/blog/%s" % str(blog_id))
+                self.redirect("/blog/")
 
 
 class NewPostPage(Handler):
