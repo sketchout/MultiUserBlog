@@ -4,6 +4,7 @@
 a {
     text-decoration: none;
 }
+
 body {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 14px;
@@ -13,12 +14,18 @@ body {
     padding: 10px;
     color: #333;
 }
-h2 {
-    font-size: 24px;
+.section-title {
+    font-size: 32px;
     font-weight: bold;
     margin-bottom: 20px;
+    color: #794;
+    font-family: Tahoma;
 }
 
+.alert {
+    color: blue;
+    font-family: monospace;
+}
 .error {
     color: red;
     font-family: monospace;
@@ -33,12 +40,14 @@ h2 {
     vertical-align: middle;
 }*/
 
+
 .bloglist-header {
     float: right;
     width: 300px;
     margin-top: -60px;
     text-align: right;
     margin-right: 10px;
+    /*font-family: verdana;*/
 }
 
 .label {
@@ -48,16 +57,16 @@ h2 {
 }
 
 input[type=text], input[type=password] {
-    width: 500px;
-    font-size: 20px;
+    width: 800px;
+    font-size: 14px;
     padding: 2px;
     font-family: monospace;
 }
 
-textarea {
-    width: 500px;
-    height: 400px;
-    font-size: 17px;
+.post-textarea {
+    width: 800px;
+    height: 350px;
+    font-size: 14px;
     font-family: monospace;
 }
 
@@ -65,11 +74,12 @@ textarea {
     text-align: left;
 }
 
-input[type=submit] {
-    width: 250px;
-    font-size: 16px;
+input[type=submit], .post-button {
+    width: 120px;
+    font-size: 12px;
     padding:5px;
 }
+
 
 .base-title {
     display: block;
@@ -77,7 +87,7 @@ input[type=submit] {
     font-size: 40px;
     font-weight: bold;
     text-align: center;
-    margin-bottom: 100px;
+    margin-bottom: 40px;
     text-decoration: none;
 }
 
@@ -91,8 +101,12 @@ input[type=submit] {
     border-bottom: 3px solid #666;
 }
 
+.post-by {
+    font-style: italic;
+}
+
 .post-title {
-    font-size: 18px;
+    font-size: 24px;
     font-weight: bold;
 }
 
@@ -109,5 +123,34 @@ input[type=submit] {
 }
 
 .post-content {
+    padding: 5px;
     margin-top: 10px;
+}
+
+.comment-holder {
+    margin-left: 40px;
+}
+
+.comment-modify-button {
+    float: right;
+    margin-top: -50px;
+}
+
+.comment-textarea {
+    width: 600px;
+    height: 120px;
+    font-size: 14px;
+    font-family: monospace;
+}
+
+.comment-content {
+    padding: 5px;
+    margin-top: 10px;
+    width: 600px;
+    outline: 1px solid #ccc;
+}
+
+.comment-modified {
+    font-size: 12px;
+    color: #ccc;
 }
