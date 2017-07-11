@@ -58,5 +58,6 @@ Setup for this project ( from udacity.com )
 
 Screen Shot - signup
 ----------------------
-![screenshot](./screenshot_signup.png)
+
+    ![screenshot](./screenshot_signup.png)
 
