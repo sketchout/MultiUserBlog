@@ -7,11 +7,13 @@ And it used the template engine which is jinja 2 ( http://jinja.pocoo.org/ ).
 If user registered in this system, user could login & write posts.
 Each post has a unique key which could use with url.
 
-# Sample Site URL ( Temporary Operation ) 
+Sample Site URL ( Temporary Operation ) 
+---------------
 
     https://norse-blade-166616.appspot.com
 
-# Page Map
+Page Tree Structure
+--------------
 
     /welcome                    : link to login or signup
 
@@ -32,27 +34,29 @@ Each post has a unique key which could use with url.
 
     /user/logout : redirect to /welcome page
         
-# Source Directoy
+Source Directoy
+---------------
 
-    / : main route code
-    
-    /static : css code
-    
-    /templates : html template code 
-    
-    /module :  use and blog request handling code
+    /           : main route code
+    /static     : css code
+    /templates  : html template code 
+    /module     :  use and blog request handling code
 
 
-# Setup for this project ( from udacity.com ) 
+Setup for this project ( from udacity.com ) 
+-------------------------------------------
 
     •	Install Python if necessary
     •	Install Google App Engine SDK.
     •	Sign Up for a Google App Engine Account.
     •	When developing locally, you can use dev_appserver.py to run a copy of your app 
         on your own computer, and access it at http://localhost:8080/.
+        $ dev_appserver.py app.yaml
     •	Create a new project in Google’s Developer Console using a unique name.
     •	Deploy your project with gcloud app deploy.
+        $ gcloud app deploy [--version = VERSION, -v VERSION] 
 
-# Screen Shot - signup
+Screen Shot - signup
+----------------------
 ![screenshot](./screenshot_signup.png)
 
