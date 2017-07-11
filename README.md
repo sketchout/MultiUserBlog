@@ -46,14 +46,14 @@ Source Directoy
 Setup for this project ( from udacity.com ) 
 -------------------------------------------
 
-    -	Install Python if necessary
-    -	Install Google App Engine SDK.
-    -	Sign Up for a Google App Engine Account.
-    -	When developing locally, you can use dev_appserver.py to run a copy of your app 
-        on your own computer, and access it at http://localhost:8080/.
+    - Install Python if necessary
+    - Install Google App Engine SDK.
+    - Sign Up for a Google App Engine Account.
+    - When developing locally, you can use dev_appserver.py to run a copy of your app 
+      on your own computer, and access it at http://localhost:8080/.
         $ dev_appserver.py app.yaml
-    -	Create a new project in Google’s Developer Console using a unique name.
-    -	Deploy your project with gcloud app deploy.
+    - Create a new project in Google’s Developer Console using a unique name.
+    - Deploy your project with gcloud app deploy.
         $ gcloud app deploy [--version = VERSION, -v VERSION] 
 
 Screen Shot - signup
